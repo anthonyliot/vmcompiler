@@ -19,16 +19,16 @@ This code use Lisp to create a pseudo compiler capable to compile lisp code into
 <h2>Usage</h2>
 
 1. Use the compiler to create ASM code
-    1. (load "gc.lisp") <span style="color:gray">*load of the compiler code*</span>
-    2. (load_file_gc "samples/fibo.lisp" "samples/fibo.lisp.asm") <span style="color:gray">*Compile the lisp source code into assembly code*</span>
-    3. (run_gc '(fibo5 5)) <span style="color:gray">*Generate an assembly code to exec a command to use inside the virtual machine*</span>
+    1. (load "gc.lisp") <span style="color:gray">*- load of the compiler code*</span>
+    2. (load_file_gc "samples/fibo.lisp" "samples/fibo.lisp.asm") <span style="color:gray">*- Compile the lisp source code into assembly code*</span>
+    3. (run_gc '(fibo5 5)) <span style="color:gray">*- Generate an assembly code to exec a command to use inside the virtual machine*</span>
 
 2. Use the compiler to create ASM code
-    1. (load "vm.lisp") <span style="color:gray">*load of the vm code*</span>
-    2. (make_vm 'test 1048576) <span style="color:gray">*create the vm name and memory*</span>
-    3. (load_file_vm 'test "samples/fibo.lisp.asm") <span style="color:gray">*load the assembly code we want to run*</span>
-        1. (apply_vm 'test '((MOVE ($ 5) R0) (PUSH R0) (MOVE ($ 1) R0) (PUSH R0) (INCR R0) (MOVE FP R1) (MOVE SP FP) (MOVE SP R2) (SUB R0 R2) (PUSH R2) (PUSH R1) (JSR (@ FIBO5)) (POP R1) (POP R2) (MOVE R1 FP) (MOVE R2 SP) (HALT)) 1) <span style="color:gray">*use the assembly snippet code from run_gc to launch a command (here: fibo5 5) in debug mode*</span>
-        2. (apply_vm 'test '((MOVE ($ 5) R0) (PUSH R0) (MOVE ($ 1) R0) (PUSH R0) (INCR R0) (MOVE FP R1) (MOVE SP FP) (MOVE SP R2) (SUB R0 R2) (PUSH R2) (PUSH R1) (JSR (@ FIBO5)) (POP R1) (POP R2) (MOVE R1 FP) (MOVE R2 SP) (HALT)) nil) <span style="color:gray">*use the assembly snippet code from run_gc to launch a command (here: fibo5 5) in non interractive mode*</span>
+    1. (load "vm.lisp") <span style="color:gray">*- load of the vm code*</span>
+    2. (make_vm 'test 1048576) <span style="color:gray">*- create the vm name and memory*</span>
+    3. (load_file_vm 'test "samples/fibo.lisp.asm") <span style="color:gray">*- load the assembly code we want to run*</span>
+        1. (apply_vm 'test '((MOVE ($ 5) R0) (PUSH R0) (MOVE ($ 1) R0) (PUSH R0) (INCR R0) (MOVE FP R1) (MOVE SP FP) (MOVE SP R2) (SUB R0 R2) (PUSH R2) (PUSH R1) (JSR (@ FIBO5)) (POP R1) (POP R2) (MOVE R1 FP) (MOVE R2 SP) (HALT)) 1) <span style="color:gray">*- use the assembly snippet code from run_gc to launch a command (here: fibo5 5) in debug mode*</span>
+        2. (apply_vm 'test '((MOVE ($ 5) R0) (PUSH R0) (MOVE ($ 1) R0) (PUSH R0) (INCR R0) (MOVE FP R1) (MOVE SP FP) (MOVE SP R2) (SUB R0 R2) (PUSH R2) (PUSH R1) (JSR (@ FIBO5)) (POP R1) (POP R2) (MOVE R1 FP) (MOVE R2 SP) (HALT)) nil) <span style="color:gray">*- use the assembly snippet code from run_gc to launch a command (here: fibo5 5) in non interractive mode*</span>
 
 
 <h2>Copyright</h2>
